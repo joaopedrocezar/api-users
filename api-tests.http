@@ -1,0 +1,85 @@
+### Teste da rota básica
+GET http://localhost:3000/
+
+###
+
+### Criar um novo usuário
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "João Silva",
+  "email": "joao.silva@email.com"
+}
+
+###
+
+### Criar outro usuário
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Maria Santos",
+  "email": "maria.santos@email.com"
+}
+
+###
+
+### Teste de validação - usuário sem nome
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "email": "sem.nome@email.com"
+}
+
+###
+
+### Teste de validação - usuário sem email
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Sem Email"
+}
+
+###
+
+### Teste de validação - usuário sem dados
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+}
+
+###
+
+### Teste de email duplicado
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "João Duplicado",
+  "email": "joao.silva@email.com"
+}
+
+###
+
+### Listar todos os usuários
+GET http://localhost:3000/users
+
+###
+
+### Teste com dados válidos diferentes
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Pedro Oliveira",
+  "email": "pedro.oliveira@email.com"
+}
+
+###
+
+### Listar usuários novamente para verificar
+GET http://localhost:3000/users
