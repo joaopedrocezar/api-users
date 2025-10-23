@@ -52,8 +52,8 @@ export class DatabaseService implements OnModuleInit, DatabaseInterface {
       const insertQuery = 'INSERT INTO users (name, email) VALUES (?, ?)';
 
       const self = this;
-      
-      this.db.run(insertQuery, [name, email], function(err) {
+
+      this.db.run(insertQuery, [name, email], function (err) {
         if (err) {
           reject(err);
         } else {
@@ -72,9 +72,12 @@ export class DatabaseService implements OnModuleInit, DatabaseInterface {
   }
 
   async getAllUsers(): Promise<any[]> {
+    console.log('Fetched all users from database');
+
     return new Promise((resolve, reject) => {
+
       const selectQuery = 'SELECT * FROM users ORDER BY created_at DESC';
-      
+
       this.db.all(selectQuery, [], (err, rows) => {
         if (err) {
           reject(err);

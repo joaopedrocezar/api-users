@@ -1,5 +1,6 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { DatabaseService } from './database.service';
+import { DatabaseInterface } from './database.interface';
 
 @Injectable()
 export class AppService {
@@ -7,7 +8,7 @@ export class AppService {
     return 'Hello World!';
   }
 
-  constructor(private readonly databaseService: DatabaseService) {}
+  constructor(private readonly databaseService: DatabaseInterface) {}
 
   async createUser(createUserDto: { name: string; email: string }) {
     try {
