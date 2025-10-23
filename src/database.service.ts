@@ -1,8 +1,9 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
 import * as sqlite3 from 'sqlite3';
+import { DatabaseInterface } from './database.interface';
 
 @Injectable()
-export class DatabaseService implements OnModuleInit {
+export class DatabaseService implements OnModuleInit, DatabaseInterface {
   private db: sqlite3.Database;
 
   async onModuleInit() {
@@ -79,20 +80,6 @@ export class DatabaseService implements OnModuleInit {
           reject(err);
         } else {
           resolve(rows);
-        }
-      });
-    });
-  }
-
-  async getUserById(id: number): Promise<any> {
-    return new Promise((resolve, reject) => {
-      const selectQuery = 'SELECT * FROM users WHERE id = ?';
-      
-      this.db.get(selectQuery, [id], (err, row) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(row);
         }
       });
     });
